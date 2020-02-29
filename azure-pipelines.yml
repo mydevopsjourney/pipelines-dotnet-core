@@ -19,3 +19,15 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
+    
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.ArtifactStagingDirectory)'''
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'''
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
